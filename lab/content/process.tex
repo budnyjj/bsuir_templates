@@ -1,4 +1,4 @@
-\section{Ход работы}
+\section{ХОД РАБОТЫ}
 
 Это самый важный и объёмный раздел работы. Уважающие себя студенты пишут его самостоятельно.
 Хорошо написан ход работы --- считай, лаба наполовину сдана!
@@ -22,6 +22,7 @@
 $ Q $ --- действительное значение величины;
 
 $ X_{i} $ --- показание прибора.
+
 \begin{equation}
   \label{eq:BaseOpt}
   \begin{aligned}
@@ -41,6 +42,8 @@ $ X_{i} $ --- показание прибора.
     \end{aligned}
 \end{equation}
 
+Дальше идет какой-то текст\dots
+
 \newpage
 
 \subsection{Пример оформления листинга}
@@ -49,26 +52,18 @@ $ X_{i} $ --- показание прибора.
 В стандарте я не находил четких инструкций по поводу оформления кода, правда, я не очент внимательно смотрел.
 Поправьте меня, если что не так: 
 
-\begin{lstlisting}[caption=\mbox{Исходный код какой-то процедуры на FoxPro}]
-PROCEDURE 1_1_update_price
-        i_title = "?"
-        i_percent = 0
+    \begin{lstlisting}[language=c,caption=\mbox{Исходный код какой-то программы на C}]
+#include <stdio.h>
 
-        @ 0,0 CLEAR
-        @ 1,1 CLEAR to 1,50
-        @ 1,1 SAY "title = " GET i_title size 1,20
-        READ
-        
-        @ 1,1 CLEAR to 1,50
-        @ 1,1 SAY "percent = " GET i_percent size 1,6
-        READ
-        
-        UPDATE store SET price = price * (1 + i_percent / 100) WHERE title = i_title
-        BROWSE
-ENDPROC
-\end{lstlisting}
+int main() /* prints "Hello world!" */
+{ 
+  printf("Hello world!"); 
+  return 0;
+}
+    \end{lstlisting}
 
-
+Так как листинг формально является рисунком, важно, чтобы расстояние
+между этим <<рисунком>> и текстом составляло ровно одну пробельную строку.
 
 
 \newpage

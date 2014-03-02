@@ -1,5 +1,5 @@
 %%% Макет страницы %%%
-\geometry{a4paper,top=15mm,bottom=20mm,left=20mm,right=10mm}
+\geometry{a4paper,top=20mm,bottom=27mm,left=30mm,right=15mm}
 \setstretch{1.2}
 
 %%% Язык текста %%%
@@ -21,9 +21,6 @@
 \pagestyle{fancy}
 
 %%% Библиография %%%
-% \makeatletter
-% \bibliographystyle{utf8gost705u}	% Оформляем библиографию в соответствии с ГОСТ 7.0.5
-
 \makeatletter
 \bibliographystyle{ugost2003s}	% Оформляем библиографию в соответствии с ГОСТ 7.0.5
 
@@ -35,17 +32,17 @@
 
 \renewcommand{\cftsecaftersnum}{}
 \renewcommand{\cftsecfont}{}   
-\renewcommand\cftsecpagefont{\normalsize}
+\renewcommand{\cftsecpagefont}{\normalsize}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 
 \setlength\cftparskip{0em}
 \setlength\cftbeforesecskip{0em}
-\setlength\cftaftertoctitleskip{1em}
+\setlength\cftaftertoctitleskip{1\baselineskip}
 \setlength{\cftsecindent}{0em}
-\setlength{\cftsecnumwidth}{1em}
+\setlength{\cftsecnumwidth}{1ex}
 
 \setlength{\cftsubsecindent}{1em}
-\setlength{\cftsubsecnumwidth}{1.8em}
+\setlength{\cftsubsecnumwidth}{2ex}
 
 %%% Требования ЕСКД/СТП %%%
 
@@ -63,15 +60,15 @@
 \DeclareMathSizes{12}{12}{6}{4}
 
 %%% Оформление текста
-\setlength{\topskip}{1em}
+\setlength{\topskip}{1\baselineskip}
 
 \setlength{\parskip}{0em}
-\setlength{\parindent}{2.5em}
+\setlength{\parindent}{5ex}
 
-\setlength{\floatsep}{1em}
-\setlength{\textfloatsep}{1em}
-\setlength{\intextsep}{1em}
-\setlength{\abovecaptionskip}{1em}
+\setlength{\floatsep}{1\baselineskip}
+\setlength{\textfloatsep}{1\baselineskip}
+\setlength{\intextsep}{1\baselineskip}
+\setlength{\abovecaptionskip}{0em}
 \setlength{\belowcaptionskip}{0em}
 
 \setlength{\topsep}{0em}
@@ -80,12 +77,13 @@
 
 \expandafter\def\expandafter\normalsize\expandafter{%
   \normalsize
-  \setlength{\abovedisplayskip}{1em}
-  \setlength{\abovedisplayshortskip}{1em}
-  \setlength{\belowdisplayskip}{1em}
-  \setlength{\belowdisplayshortskip}{1em}
+  % \setlength{\abovedisplayskip}{1\baselineskip}
+  % \setlength{\abovedisplayshortskip}{1\baselineskip}
+  % \setlength{\belowdisplayskip}{1\baselineskip}
+  \setlength{\belowdisplayshortskip}{1\baselineskip}
 }
-% \setlength{}{}        CC          
+
+% \setlength{}{}                
 \setitemize[0]{itemindent=3.5em,leftmargin=0em,itemsep=0pt,topsep=0pt,parsep=0pt}
 \renewcommand{\labelitemi}{$-$}
 
@@ -94,16 +92,18 @@
 \captionsetup[table]{labelsep=endash,justification=raggedright,singlelinecheck=false,skip=0em}
 
 \captionsetup[lstlisting]{labelsep=endash,justification=centering,singlelinecheck=false}
+
 \lstset{
-language=sql,
-numberstyle=\footnotesize\ttfamily,
-basicstyle=\footnotesize\ttfamily,
+keywordstyle=\bfseries,
+commentstyle=\itshape,
+showstringspaces=false,
 numbers=left,
+xleftmargin=5ex,
 stepnumber=1,
-frame=single,
+keepspaces=true,
 captionpos=b,
-aboveskip=1.5em,
-belowskip=1.5em,
+aboveskip=\baselineskip,
+belowskip=\baselineskip,
 breaklines=true}
 
 \renewcommand{\arraystretch}{1.5}
