@@ -1,6 +1,6 @@
 %%% Макет страницы %%%
 \geometry{a4paper,top=20mm,bottom=27mm,left=30mm,right=15mm}
-\setstretch{1.2}
+\setstretch{1.15}
 
 %%% Язык текста %%%
 \selectlanguage{russian}
@@ -22,7 +22,7 @@
 
 %%% Библиография %%%
 \makeatletter
-\bibliographystyle{ugost2003s}	% Оформляем библиографию в соответствии с ГОСТ 7.0.5
+\bibliographystyle{ugost2003s}	% Оформляем библиографию в соответствии с ГОСТ 7.1 2003
 
 %%% Изображения %%%
 \graphicspath{{images/}} % Пути к изображениям
@@ -47,13 +47,16 @@
 %%% Требования ЕСКД/СТП %%%
 
 %%% Размеры заголовков
-\titleformat{\section}{\large\bfseries}{\thesection\ }{0em}{}
-\titleformat{name=\section,numberless}{\large\bfseries\filcenter}{}{0em}{}
-\titlespacing*{\section}{2.5em}{1em}{1em}
+\titleformat{\section}{\large\bfseries}{\thesection}{0.7em}{}
+\titlespacing*{\section}{5ex}{1\baselineskip}{1\baselineskip}
 
-\titleformat{name=\subsection}{\normalsize\bfseries}{\thesubsection\ }{0em}{}
-\titleformat{name=\subsection,numberless}{\normalsize\bfseries}{\ }{0em}{}
-\titlespacing*{\subsection}{2.5em}{1em}{1em}
+\titleformat{name=\section,numberless}{\large\bfseries\filcenter}{}{0em}{}
+\titlespacing*{name=\section,numberless}{0ex}{1\baselineskip}{1\baselineskip}
+
+\titleformat{name=\subsection}{\normalsize\bfseries}{\thesubsection}{0.7em}{}
+\titlespacing*{\subsection}{5ex}{1\baselineskip}{1\baselineskip}
+
+\titleformat{name=\subsection,numberless}{\normalsize\bfseries}{}{0em}{}
 
 %%% Размеры текста формул %%%
 
@@ -83,29 +86,75 @@
   \setlength{\belowdisplayshortskip}{1\baselineskip}
 }
 
-% \setlength{}{}                
-\setitemize[0]{itemindent=3.5em,leftmargin=0em,itemsep=0pt,topsep=0pt,parsep=0pt}
+             
+\setitemize[0]{itemindent=3.4em,leftmargin=0em,itemsep=0em,topsep=0em,parsep=0em}
 \renewcommand{\labelitemi}{$-$}
 
-\captionsetup[figure]{labelsep=endash,justification=centering,singlelinecheck=false,skip=0em}
+\captionsetup[figure]{
+  labelsep=endash,
+  justification=centering,
+  singlelinecheck=false,
+  position=bottom,
+  skip=1\baselineskip}
 
-\captionsetup[table]{labelsep=endash,justification=raggedright,singlelinecheck=false,skip=0em}
+\captionsetup[table]{
+  labelsep=endash,
+  justification=raggedright,
+  singlelinecheck=false,
+  position=top,
+  skip=0ex}
 
-\captionsetup[lstlisting]{labelsep=endash,justification=centering,singlelinecheck=false}
+\captionsetup[lstlisting]{
+  labelsep=endash
+}
 
 \lstset{
+basicstyle=\normalsize,
 keywordstyle=\bfseries,
 commentstyle=\itshape,
-showstringspaces=false,
 numbers=left,
-xleftmargin=5ex,
 stepnumber=1,
-keepspaces=true,
+frame=single,
+resetmargins=true,
 captionpos=b,
-aboveskip=\baselineskip,
-belowskip=\baselineskip,
-breaklines=true}
+keepspaces=true,
+breaklines=true,
+aboveskip=1.2\baselineskip,
+belowskip=0em,
+abovecaptionskip=1.2\baselineskip}
 
 \renewcommand{\arraystretch}{1.5}
 
 %%% Красоты %%%
+
+\mdfdefinestyle{listing}
+{
+  hidealllines = true,
+  skipabove    = 1\baselineskip,
+  skipbelow    = 1\baselineskip,
+  leftmargin = 5ex,
+  rightmargin = 2ex,
+  innertopmargin = 0em,
+  innerbottommargin = 0em,
+  innerleftmargin = 0em,
+  innerrightmargin = 0em,
+  singleextra  = {},
+  firstextra   = {
+    \node[below right,overlay,align=center,font=\normalsize]
+    at (O) {\continuingtext};
+  },
+  secondextra  = {
+    \node[above right,overlay,align=center,font=\normalsize]
+    at (O |- P) {\continuedtext};
+  },
+  middleextra  = {
+    \node[below right,overlay,align=center,font=\normalsize]
+    at (O) {\continuingtext};
+    \node[above right,overlay,align=center,font=\normalsize]
+    at (O |- P) {\continuedtext};
+  }
+}
+
+% customize the appearance of the continuing notes:
+\newcommand*\continuingtext{Продолжение на следующей странице}
+\newcommand*\continuedtext{Продолжение листинга}
