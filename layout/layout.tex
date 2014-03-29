@@ -1,0 +1,105 @@
+\documentclass[a4paper,hidelinks,14pt]{extarticle}
+
+\usepackage{layouts}
+\input{sys/packages}        % Подключаемые пакеты
+\input{sys/styles}	    % Пользовательские стили
+
+\begin{document}
+\setuplayouts
+
+\input{sys/names}	    % Пользовательские стили
+
+\section{Страница}
+
+\begin{figure}
+\currentpage
+\drawparametersfalse
+\drawpage
+\caption{Page layout for this document} \label{fig:pplt}
+\end{figure}
+
+\begin{figure}
+  \currentpage
+  \drawparameterstrue
+  \drawpage
+  \caption{Page layout for this document} \label{fig:ptrs}
+\end{figure}
+
+\section{Абзац}
+
+\begin{figure}
+\drawparagraph
+\caption{Paragraph parameters}\label{fig:fpara}
+\end{figure}
+
+\currentparagraph
+\begin{figure}
+\drawparametersfalse
+\drawparagraph
+\caption{Paragraphs in this document}\label{fig:dpara}
+\end{figure}
+
+\section{Плавающий элемент}
+
+\begin{figure}
+\drawfloatpage
+\caption{Float and text page parameters}\label{fig:fpp}
+\end{figure}
+
+
+\begin{figure}
+\drawparametersfalse
+\setlayoutscale{1}
+\drawfloat
+\caption{Float parameters}\label{fig:fludf}
+\end{figure}
+
+\floatvalues
+
+\section{Список}
+
+\begin{figure}
+\drawlist
+\caption{List parameters} \label{fig:lstp}
+\end{figure}
+
+\begin{itemize}
+\item Figure~\ref{fig:lstitem} illustrates the layout of an
+\texttt{itemize} list.
+\currentlist
+\begin{figure}
+\drawparametersfalse
+\drawlist
+\caption{Layout of an \texttt itemize list} \label{fig:lstenum}
+\end{figure}
+\end{itemize}
+
+
+\begin{enumerate}
+\item Figure~\ref{fig:lstenum} illustrates the layout of an
+\texttt{enumerate} list.
+\currentlist
+\begin{figure}
+\drawparametersfalse
+\drawlist
+\caption{Layout of an \texttt{enumerate} list} \label{fig:lstenum}
+\end{figure}
+\end{enumerate}
+
+\section{Заголовок}
+
+\begin{figure}
+\setlayoutscale{1}
+\drawheading{ }
+\caption{Display heading parameters}\label{fig:hdp}
+\end{figure}
+
+\begin{figure}
+\setlayoutscale{1}
+\runinheadtrue
+\drawheading{ }
+\caption{Run-in heading parameters}\label{fig:hrp}
+\end{figure}
+
+\end{document}
+ 
