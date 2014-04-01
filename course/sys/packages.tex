@@ -2,10 +2,12 @@
 \usepackage{pdflscape}   % Для включения альбомных страниц
 \usepackage{geometry} % Для последующего задания полей
 \usepackage{setspace} % Для интерлиньяжа
+\usepackage[14pt]{extsizes}
 \usepackage{titlesec}
 \usepackage{tocloft}
 \usepackage{enumitem}
 \usepackage{fancyhdr}
+\usepackage[framemethod=tikz]{mdframed}
 
 %%% Кодировки и шрифты %%%
 \usepackage{cmap}                    % Улучшенный поиск русских слов в полученном pdf-файле
@@ -14,13 +16,12 @@
 \usepackage[english=nohyphenation,russian=nohyphenation]{hyphsubst} % запрет перносов
 \usepackage[english, russian]{babel} % Языки: русский, английский
 
-\usepackage{pscyr}
-\usepackage{courier}						% Красивые русские шрифты
+\usepackage{pscyr}						% Красивые русские шрифты
 
 %%% Математические пакеты %%%
 \usepackage{amsthm,amsfonts,amsmath,amssymb,amscd} % Математические дополнения от AMS
 
-%%% оформление абзацев %%%
+%%% Оформление абзацев %%%
 \usepackage{indentfirst} % Красная строка
 
 %%% Цвета %%%
@@ -33,10 +34,11 @@
 \usepackage{multirow,makecell,array} % Улучшенное форматирование таблиц
 
 %%% Общее форматирование
-\usepackage[figureposition=bottom,tableposition=top]{caption}
-\usepackage{subcaption}
+\usepackage[tableposition=top]{caption}
+\captionsetup[figure]{labelsep=space,justification=centering,singlelinecheck=false}
+\captionsetup[lstlisting]{labelsep=space,justification=centering,singlelinecheck=false}
 
-\usepackage{soul}     % Поддержка переносоустойчивых подчёркиваний и зачёркиваний
+\usepackage{soul}                    % Поддержка переносоустойчивых подчёркиваний и зачёркиваний
 \usepackage{multicol}
 
 %%% Библиография %%%

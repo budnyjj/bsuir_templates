@@ -1,5 +1,6 @@
- %%% Макет страницы %%%
+%%% Макет страницы %%%
 \geometry{a4paper,top=20mm,bottom=27mm,left=30mm,right=15mm}
+\setstretch{1.15}
 
 %%% Язык текста %%%
 \selectlanguage{russian}
@@ -11,29 +12,20 @@
 \sloppy				% Избавляемся от переполнений
 \clubpenalty=10000		% Запрещаем разрыв страницы после первой строки абзаца
 \widowpenalty=10000		% Запрещаем разрыв страницы после последней строки абзаца
-\interfootnotelinepenalty=10000 % Запрет разрывы сносок
-
-%%% Требования СТП %%%
-%%% Интерлиньяж
-\setstretch{1.15}
+\interfootnotelinepenalty=10000 % Запрет разрывов сносок
 
 %%% Нумерация %%%
-\fancypagestyle{empty}{%
-\fancyhf{} % clear all header and footer fields
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
-\setlength{\headheight}{5mm} 
-}
 
 \fancypagestyle{plain}{%
+\fancyhf{} % clear all header and footer fields
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}}
+
+\pagestyle{fancy}
 \fancyhf{} % clear all header and footer fields
 \fancyfoot[R]{\thepage} 
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
-\setlength{\headheight}{5mm}
-}
-
-\pagestyle{plain}
 
 %%% Библиография %%%
 \makeatletter
@@ -45,138 +37,136 @@
 %%% Содержание %%%
 \renewcommand{\cfttoctitlefont}{\hfil \large\bfseries}
 
-\renewcommand{\cftsecaftersnum}{}
+\setlength{\cftparskip}{0em}
+\setlength{\cftbeforesecskip}{0em}
+\setlength{\cftaftertoctitleskip}{1\baselineskip}
+
+\renewcommand{\cftsecaftersnumb}{\:}
 \renewcommand{\cftsecfont}{}   
 \renewcommand{\cftsecpagefont}{\normalsize}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
-
-\setlength{\cftparskip}{0em}
-\setlength{\cftbeforesecskip}{0em}
-\setlength{\cftaftertoctitleskip}{\baselineskip}
 \setlength{\cftsecindent}{0em}
-\setlength{\cftsecnumwidth}{1ex}
+\setlength{\cftsecnumwidth}{0.6em}
 
-\setlength{\cftsubsecindent}{1em}
-\setlength{\cftsubsecnumwidth}{2ex}
+\setlength{\cftsubsecindent}{0.7em}
+\setlength{\cftsubsecnumwidth}{1.5em}
 
+%%% Требования ЕСКД/СТП %%%
 
 %%% Размеры заголовков
 \newcommand{\sectionbreak}{\clearpage}
 
-\titleformat{\section}{\large\bfseries}{\thesection}{0.7em}{}
-\titlespacing*{\section}{5ex}{\baselineskip}{\baselineskip}
+\titleformat{\section}{\large\bfseries}{\thesection\:}{0em}{}
+\titlespacing*{\section}{5ex}{1\baselineskip}{1\baselineskip}
 
 \titleformat{name=\section,numberless}{\large\bfseries\filcenter}{}{0em}{}
-\titlespacing*{name=\section,numberless}{0ex}{\baselineskip}{\baselineskip}
+\titlespacing*{name=\section,numberless}{0ex}{1\baselineskip}{1\baselineskip}
 
-\titleformat{name=\subsection}{\normalsize\bfseries}{\thesubsection}{0.7em}{}
-\titlespacing*{\subsection}{5ex}{\baselineskip}{\baselineskip}
+\titleformat{name=\subsection}{\normalsize\bfseries}{\thesubsection\:}{0em}{}
+\titlespacing*{\subsection}{5ex}{1\baselineskip}{1\baselineskip}
 
 \titleformat{name=\subsection,numberless}{\normalsize\bfseries}{}{0em}{}
+\titlespacing*{name=\subsection,numberless}{0ex}{1\baselineskip}{1\baselineskip}
 
 %%% Размеры текста формул %%%
 
 \DeclareMathSizes{12}{12}{6}{4}
 
 %%% Оформление текста
+\setlength{\topskip}{1\baselineskip}
 
-\setlength{\parskip}{0pt}
+\setlength{\parskip}{0em}
 \setlength{\parindent}{1.25cm}
 
-%%% Расстояние между плавающими элементами
+\setlength{\floatsep}{1\baselineskip}
+\setlength{\textfloatsep}{1\baselineskip}
+\setlength{\intextsep}{1\baselineskip}
+\setlength{\abovecaptionskip}{0em}
+\setlength{\belowcaptionskip}{0em}
 
-\setlength{\floatsep}{\baselineskip} % between top floats
-\setlength{\textfloatsep}{\baselineskip} % between top/bottom floats and text
-\setlength{\intextsep}{\baselineskip} % between text and float
-\setlength{\dbltextfloatsep}{\baselineskip}
-\setlength{\dblfloatsep}{\baselineskip}
+\setlength{\topsep}{0em}
+\setlength{\partopsep}{0em}
+\setlength{\itemsep}{0em}
 
- % костыль для того, чтобы убрать расстояние от картинки до текста
-\setlength{\abovecaptionskip}{0pt}
-\setlength{\belowcaptionskip}{0pt}
 
-%%% Расстояние между формулами
 
-\AtBeginDocument{%
-  \setlength\abovedisplayskip{\baselineskip}%
-  \setlength\belowdisplayskip{\baselineskip}%
-  \setlength\abovedisplayshortskip{\baselineskip}%
-  \setlength\belowdisplayshortskip{\baselineskip}%
+\expandafter\def\expandafter\normalsize\expandafter{%
+  \normalsize
+  % \setlength{\abovedisplayskip}{1\baselineskip}
+  % \setlength{\abovedisplayshortskip}{1\baselineskip}
+  % \setlength{\belowdisplayskip}{1\baselineskip}
+  \setlength{\belowdisplayshortskip}{1\baselineskip}
 }
 
-%%% Оформление списков
+             
+\setitemize[0]{itemindent=3.4em,leftmargin=0em,itemsep=0em,topsep=0em,parsep=0em}
+\renewcommand{\labelitemi}{$-$}
 
-\AddEnumerateCounter{\asbuk}{\@asbuk}{\cyrm}
-
-\setlist{nosep,listparindent=\parindent}
-\setlist[1]{itemindent=19mm,leftmargin=0em,itemsep=0em,topsep=0em,parsep=0em}             
-\setlist[itemize,1]{label=$-$}
-\setlist[enumerate,1]{label=\asbuk*)}
-
-\setlist[2]{itemindent=6.5em,leftmargin=0em,itemsep=0em,topsep=0em,parsep=0em}             
-\setlist[enumerate,2]{label=\arabic*)}
-
-%%% Оформление подписей к плавающим элементам
-
-\captionsetup[figure]{labelsep=endash,
+\captionsetup[figure]{
+  labelsep=endash,
   justification=centering,
   singlelinecheck=false,
   position=bottom,
-  skip=1\baselineskip
-}
-
-\captionsetup[subfigure]{margin=0pt,
-  position=bottom,
-  font=normalsize,
-  labelformat=simple,
-  labelsep=endash,
-  skip=\baselineskip}
+  skip=1\baselineskip}
 
 \captionsetup[table]{
   labelsep=endash,
   justification=raggedright,
   singlelinecheck=false,
-  skip=0pt}
+  position=top,
+  skip=0ex}
 
-\captionsetup[lstlisting]{labelsep=endash,
-  justification=centering,
-  singlelinecheck=false,
-  skip=\baselineskip}
+\captionsetup[lstlisting]{
+  labelsep=endash
+}
 
 \lstset{
-  basicstyle=\small\ttfamily,
-  keywordstyle=\bfseries,
-  commentstyle=\itshape,
-  numbers=none,
-  stepnumber=1,
-  frame=single,
-  framesep=0ex,
-  resetmargins=true,
-  captionpos=b,
-  keepspaces=true,
-  breaklines=true,
-  floatplacement=!h,
-  aboveskip=1.2\baselineskip,
-  belowskip=\baselineskip,
-  abovecaptionskip=\baselineskip,
-  belowcaptionskip=0pt}
+basicstyle=\normalsize,
+keywordstyle=\bfseries,
+commentstyle=\itshape,
+numbers=left,
+stepnumber=1,
+frame=single,
+resetmargins=true,
+captionpos=b,
+keepspaces=true,
+breaklines=true,
+aboveskip=1.2\baselineskip,
+belowskip=0em,
+abovecaptionskip=1.2\baselineskip}
 
 \renewcommand{\arraystretch}{1.5}
 
-%%% Нумерация плавающих элементов %%%
+%%% Красоты %%%
 
-\renewcommand{\thesubfigure}{\asbuk{subfigure}}
+\mdfdefinestyle{listing}
+{
+  hidealllines = true,
+  skipabove    = 1\baselineskip,
+  skipbelow    = 1\baselineskip,
+  leftmargin = 5ex,
+  rightmargin = 2ex,
+  innertopmargin = 0em,
+  innerbottommargin = 0em,
+  innerleftmargin = 0em,
+  innerrightmargin = 0em,
+  singleextra  = {},
+  firstextra   = {
+    \node[below right,overlay,align=center,font=\normalsize]
+    at (O) {\continuingtext};
+  },
+  secondextra  = {
+    \node[above right,overlay,align=center,font=\normalsize]
+    at (O |- P) {\continuedtext};
+  },
+  middleextra  = {
+    \node[below right,overlay,align=center,font=\normalsize]
+    at (O) {\continuingtext};
+    \node[above right,overlay,align=center,font=\normalsize]
+    at (O |- P) {\continuedtext};
+  }
+}
 
-%%% Совместная нумерация для рисунков и листингов
-
-\makeatletter
-\AtBeginDocument{%
-\renewcommand{\thelstlisting}{\arabic{lstlisting}}
-\renewcommand{\thefigure}{\arabic{figure}}
-\let\c@lstlisting\c@figure}
-\makeatother 
-
-%%% Настройка размеров вертикальных отступов
-
-\renewcommand{\smallskip}{\vspace{0.5ex}}
-\renewcommand{\bigskip}{\vspace{\baselineskip}}
+% customize the appearance of the continuing notes:
+\newcommand*\continuingtext{Продолжение на следующей странице}
+\newcommand*\continuedtext{Продолжение листинга}
