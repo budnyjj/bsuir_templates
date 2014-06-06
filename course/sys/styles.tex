@@ -14,22 +14,39 @@
 \widowpenalty=10000		% Запрещаем разрыв страницы после последней строки абзаца
 \interfootnotelinepenalty=10000 % Запрет разрывов сносок
 
-%%% Нумерация %%%
-
-\fancypagestyle{plain}{%
+%%% Нумерация страниц %%%
+\fancypagestyle{empty}{%
 \fancyhf{} % clear all header and footer fields
 \renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}}
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\headheight}{5mm} 
+}
 
-\pagestyle{fancy}
+\fancypagestyle{plain}{%
 \fancyhf{} % clear all header and footer fields
 \fancyfoot[R]{\thepage} 
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
+\setlength{\headheight}{5mm}
+}
+
+\pagestyle{plain}
 
 %%% Библиография %%%
+
 \makeatletter
-\bibliographystyle{ugost2003s}	% Оформляем библиографию в соответствии с ГОСТ 7.1 2003
+\bibliographystyle{ugost2003s} % Оформляем библиографию в соответствии с ГОСТ 7.1 2003
+
+\let\oldthebibliography=\thebibliography
+\let\endoldthebibliography=\endthebibliography
+\renewenvironment{thebibliography}[1]{
+  \begin{oldthebibliography}{#1}
+    \setlength{\parskip}{0ex}
+    \setlength{\itemsep}{0ex}
+}
+{
+\end{oldthebibliography}
+}
 
 %%% Изображения %%%
 \graphicspath{{images/}} % Пути к изображениям
@@ -56,51 +73,93 @@
 %%% Размеры заголовков
 \newcommand{\sectionbreak}{\clearpage}
 
-\titleformat{\section}{\large\bfseries}{\thesection\:}{0em}{}
+\titleformat{\section}{\large\bfseries}{\thesection}{\wordsep}{}
 \titlespacing*{\section}{5ex}{1\baselineskip}{1\baselineskip}
 
 \titleformat{name=\section,numberless}{\large\bfseries\filcenter}{}{0em}{}
 \titlespacing*{name=\section,numberless}{0ex}{1\baselineskip}{1\baselineskip}
 
-\titleformat{name=\subsection}{\normalsize\bfseries}{\thesubsection\:}{0em}{}
+\titleformat{name=\subsection}{\normalsize\bfseries}{\thesubsection}{\wordsep}{}
 \titlespacing*{\subsection}{5ex}{1\baselineskip}{1\baselineskip}
 
 \titleformat{name=\subsection,numberless}{\normalsize\bfseries}{}{0em}{}
 \titlespacing*{name=\subsection,numberless}{0ex}{1\baselineskip}{1\baselineskip}
 
+%%% Нумерация параграфов
+
+\counterwithout{paragraph}{subsubsection}
+\counterwithin{paragraph}{subsection}
+\renewcommand{\theparagraph}{\thesubsection.\arabic{paragraph}}
+\setcounter{secnumdepth}{4}
+
+\titleformat{name=\paragraph}[runin]{\normalsize\bfseries}{\theparagraph}{\wordsep}{}
+\titlespacing*{\paragraph}{5ex}{\baselineskip}{\wordsep}
+
 %%% Размеры текста формул %%%
 
 \DeclareMathSizes{12}{12}{6}{4}
 
-%%% Оформление текста
-\setlength{\topskip}{1\baselineskip}
+%%% Расстояние между формулами
 
-\setlength{\parskip}{0em}
-\setlength{\parindent}{1.25cm}
-
-\setlength{\floatsep}{1\baselineskip}
-\setlength{\textfloatsep}{1\baselineskip}
-\setlength{\intextsep}{1\baselineskip}
-\setlength{\abovecaptionskip}{0em}
-\setlength{\belowcaptionskip}{0em}
-
-\setlength{\topsep}{0em}
-\setlength{\partopsep}{0em}
-\setlength{\itemsep}{0em}
-
-
-
-\expandafter\def\expandafter\normalsize\expandafter{%
-  \normalsize
-  % \setlength{\abovedisplayskip}{1\baselineskip}
-  % \setlength{\abovedisplayshortskip}{1\baselineskip}
-  % \setlength{\belowdisplayskip}{1\baselineskip}
-  \setlength{\belowdisplayshortskip}{1\baselineskip}
+\AtBeginDocument{%
+  \setlength\abovedisplayskip{\baselineskip}%
+  \setlength\belowdisplayskip{\baselineskip}%
+  \setlength\abovedisplayshortskip{\baselineskip}%
+  \setlength\belowdisplayshortskip{\baselineskip}%
 }
 
-             
-\setitemize[0]{itemindent=3.4em,leftmargin=0em,itemsep=0em,topsep=0em,parsep=0em}
-\renewcommand{\labelitemi}{$-$}
+%%% Оформление текста
+
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{1.25cm}
+
+%%% Расстояние между плавающими элементами
+
+\setlength{\floatsep}{\baselineskip} % between top floats
+\setlength{\textfloatsep}{\baselineskip} % between top/bottom floats and text
+\setlength{\intextsep}{\baselineskip} % between text and float
+\setlength{\dbltextfloatsep}{\baselineskip}
+\setlength{\dblfloatsep}{\baselineskip}
+
+ % костыль для того, чтобы убрать расстояние от картинки до текста
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{0pt}
+           
+%%% Оформление списков
+\AddEnumerateCounter{\asbuk}{\@asbuk}{\cyrm}
+
+\setlist{nosep,listparindent=\parindent}
+\setlist[1]{itemindent=19mm,leftmargin=0em,itemsep=0em,topsep=0em,parsep=0em}             
+\setlist[itemize,1]{label=$-$}
+\setlist[enumerate,1]{label=\arabic*)}
+
+\setlist[2]{itemindent=6.5em,leftmargin=0em,itemsep=0em,topsep=0em,parsep=0em}             
+
+% Определяем новый стиль для списков,
+% на которые есть ссылки в тексте
+\newlist{reflist}{enumerate*}{1}
+\setlist*[reflist,1]{%
+  label=\asbuk*),
+}
+
+\setlist*[reflist,2]{%
+  label=\arabic*),
+}
+
+%% Нумерация плавающих элементов
+
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+
+\makeatletter
+\AtBeginDocument{%
+\renewcommand{\thetable}{\thesection.\arabic{table}}
+\renewcommand{\thelstlisting}{\thesection.\arabic{lstlisting}}
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+\let\c@lstlisting\c@figure}
+\makeatother 
+
+%% Подписи плавающих элементов
 
 \captionsetup[figure]{
   labelsep=endash,
@@ -121,52 +180,26 @@
 }
 
 \lstset{
-basicstyle=\normalsize,
+basicstyle=\small\ttfamily,
 keywordstyle=\bfseries,
 commentstyle=\itshape,
+numberstyle=\small\ttfamily,
 numbers=left,
 stepnumber=1,
 frame=single,
 resetmargins=true,
+xleftmargin=1.5em,
+xrightmargin=0.5em,
 captionpos=b,
 keepspaces=true,
 breaklines=true,
 aboveskip=1.2\baselineskip,
-belowskip=0em,
-abovecaptionskip=1.2\baselineskip}
+belowskip=1\baselineskip,
+abovecaptionskip=1\baselineskip}
 
 \renewcommand{\arraystretch}{1.5}
 
-%%% Красоты %%%
+%%% Настройка размеров вертикальных отступов
 
-\mdfdefinestyle{listing}
-{
-  hidealllines = true,
-  skipabove    = 1\baselineskip,
-  skipbelow    = 1\baselineskip,
-  leftmargin = 5ex,
-  rightmargin = 2ex,
-  innertopmargin = 0em,
-  innerbottommargin = 0em,
-  innerleftmargin = 0em,
-  innerrightmargin = 0em,
-  singleextra  = {},
-  firstextra   = {
-    \node[below right,overlay,align=center,font=\normalsize]
-    at (O) {\continuingtext};
-  },
-  secondextra  = {
-    \node[above right,overlay,align=center,font=\normalsize]
-    at (O |- P) {\continuedtext};
-  },
-  middleextra  = {
-    \node[below right,overlay,align=center,font=\normalsize]
-    at (O) {\continuingtext};
-    \node[above right,overlay,align=center,font=\normalsize]
-    at (O |- P) {\continuedtext};
-  }
-}
-
-% customize the appearance of the continuing notes:
-\newcommand*\continuingtext{Продолжение на следующей странице}
-\newcommand*\continuedtext{Продолжение листинга}
+\renewcommand{\smallskip}{\vspace{0.5ex}}
+\renewcommand{\bigskip}{\vspace{\baselineskip}}

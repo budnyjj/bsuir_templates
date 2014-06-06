@@ -6,16 +6,17 @@
 \usepackage{tocloft}
 \usepackage{enumitem}
 \usepackage{fancyhdr}
+\usepackage{chngcntr} % Для нумерации параграфов
 
 %%% Кодировки и шрифты %%%
 \usepackage{cmap}                    % Улучшенный поиск русских слов в полученном pdf-файле
 \usepackage[T1,T2A]{fontenc}	     % Поддержка русских букв
 \usepackage[utf8x]{inputenc}	     % Кодировка utf8
-\usepackage[english=nohyphenation,russian=nohyphenation]{hyphsubst} % запрет перносов
+% \usepackage[english=nohyphenation,russian=nohyphenation]{hyphsubst} % запрет перносов
 \usepackage[english, russian]{babel} % Языки: русский, английский
 
-\usepackage{pscyr}
-\usepackage{courier}						% Красивые русские шрифты
+\usepackage{courier}
+\usepackage{pscyr}  % Красивые русские шрифты
 
 %%% Математические пакеты %%%
 \usepackage{amsthm,amsfonts,amsmath,amssymb,amscd} % Математические дополнения от AMS
@@ -50,3 +51,7 @@
 
 %%% Листинги %%%
 \usepackage{listings} %% собственно, это и есть пакет listings
+
+%%% Рисунки TEX %%%
+\usepackage{tikz}
+
