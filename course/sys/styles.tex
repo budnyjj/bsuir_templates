@@ -41,8 +41,8 @@
 \let\endoldthebibliography=\endthebibliography
 \renewenvironment{thebibliography}[1]{
   \begin{oldthebibliography}{#1}
-    \setlength{\parskip}{0ex}
-    \setlength{\itemsep}{0ex}
+    \setlength{\parskip}{0mm}
+    \setlength{\itemsep}{0mm}
 }
 {
 \end{oldthebibliography}
@@ -54,19 +54,19 @@
 %%% Содержание %%%
 \renewcommand{\cfttoctitlefont}{\hfil \large\bfseries}
 
-\setlength{\cftparskip}{0em}
-\setlength{\cftbeforesecskip}{0em}
-\setlength{\cftaftertoctitleskip}{1\baselineskip}
+\setlength{\cftparskip}{0mm}
+\setlength{\cftbeforesecskip}{0mm}
+\setlength{\cftaftertoctitleskip}{14pt}
 
 \renewcommand{\cftsecaftersnumb}{\:}
 \renewcommand{\cftsecfont}{}   
 \renewcommand{\cftsecpagefont}{\normalsize}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
-\setlength{\cftsecindent}{0em}
-\setlength{\cftsecnumwidth}{0.6em}
+\setlength{\cftsecindent}{0mm}
+\setlength{\cftsecnumwidth}{3mm}
 
-\setlength{\cftsubsecindent}{0.7em}
-\setlength{\cftsubsecnumwidth}{1.5em}
+\setlength{\cftsubsecindent}{4mm}
+\setlength{\cftsubsecnumwidth}{8mm}
 
 %%% Требования ЕСКД/СТП %%%
 
@@ -74,16 +74,16 @@
 \newcommand{\sectionbreak}{\clearpage}
 
 \titleformat{\section}{\large\bfseries}{\thesection}{\wordsep}{}
-\titlespacing*{\section}{5ex}{1\baselineskip}{1\baselineskip}
+\titlespacing*{\section}{12mm}{14pt}{14pt}
 
-\titleformat{name=\section,numberless}{\large\bfseries\filcenter}{}{0em}{}
-\titlespacing*{name=\section,numberless}{0ex}{1\baselineskip}{1\baselineskip}
+\titleformat{name=\section,numberless}{\large\bfseries\filcenter}{}{0mm}{}
+\titlespacing*{name=\section,numberless}{0mm}{14pt}{14pt}
 
 \titleformat{name=\subsection}{\normalsize\bfseries}{\thesubsection}{\wordsep}{}
-\titlespacing*{\subsection}{5ex}{1\baselineskip}{1\baselineskip}
+\titlespacing*{\subsection}{12mm}{14pt}{14pt}
 
-\titleformat{name=\subsection,numberless}{\normalsize\bfseries}{}{0em}{}
-\titlespacing*{name=\subsection,numberless}{0ex}{1\baselineskip}{1\baselineskip}
+\titleformat{name=\subsection,numberless}{\normalsize\bfseries}{}{0mm}{}
+\titlespacing*{name=\subsection,numberless}{0mm}{14pt}{14pt}
 
 %%% Нумерация параграфов
 
@@ -93,7 +93,7 @@
 \setcounter{secnumdepth}{4}
 
 \titleformat{name=\paragraph}[runin]{\normalsize\bfseries}{\theparagraph}{\wordsep}{}
-\titlespacing*{\paragraph}{5ex}{\baselineskip}{\wordsep}
+\titlespacing*{\paragraph}{12mm}{14pt}{\wordsep}
 
 %%% Размеры текста формул %%%
 
@@ -102,26 +102,27 @@
 %%% Расстояние между формулами
 
 \AtBeginDocument{%
-  \setlength\abovedisplayskip{\baselineskip}%
-  \setlength\belowdisplayskip{\baselineskip}%
-  \setlength\abovedisplayshortskip{\baselineskip}%
-  \setlength\belowdisplayshortskip{\baselineskip}%
+  \setlength\abovedisplayskip{14pt}%
+  \setlength\belowdisplayskip{14pt}%
+  \setlength\abovedisplayshortskip{14pt}%
+  \setlength\belowdisplayshortskip{14pt}%
 }
 
 %%% Оформление текста
 
 \setlength{\parskip}{0pt}
-\setlength{\parindent}{1.25cm}
+\setlength{\parindent}{12mm}
+\raggedbottom
 
 %%% Расстояние между плавающими элементами
 
-\setlength{\floatsep}{\baselineskip} % between top floats
-\setlength{\textfloatsep}{\baselineskip} % between top/bottom floats and text
-\setlength{\intextsep}{\baselineskip} % between text and float
-\setlength{\dbltextfloatsep}{\baselineskip}
-\setlength{\dblfloatsep}{\baselineskip}
+\setlength{\floatsep}{14pt}     % between top floats
+\setlength{\textfloatsep}{14pt} % between top/bottom floats and text
+\setlength{\intextsep}{20pt}    % between text and float
+\setlength{\dbltextfloatsep}{14pt}
+\setlength{\dblfloatsep}{14pt}
 
- % костыль для того, чтобы убрать расстояние от картинки до текста
+% костыль для того, чтобы убрать расстояние от картинки до текста
 \setlength{\abovecaptionskip}{0pt}
 \setlength{\belowcaptionskip}{0pt}
            
@@ -129,11 +130,11 @@
 \AddEnumerateCounter{\asbuk}{\@asbuk}{\cyrm}
 
 \setlist{nosep,listparindent=\parindent}
-\setlist[1]{itemindent=19mm,leftmargin=0em,itemsep=0em,topsep=0em,parsep=0em}             
+\setlist[1]{itemindent=18.5mm,leftmargin=0mm,itemsep=0mm,topsep=0mm,parsep=0mm}             
 \setlist[itemize,1]{label=$-$}
 \setlist[enumerate,1]{label=\arabic*)}
 
-\setlist[2]{itemindent=6.5em,leftmargin=0em,itemsep=0em,topsep=0em,parsep=0em}             
+\setlist[2]{itemindent=20.5mm,leftmargin=0mm,itemsep=0mm,topsep=0mm,parsep=0mm}             
 
 % Определяем новый стиль для списков,
 % на которые есть ссылки в тексте
@@ -166,40 +167,42 @@
   justification=centering,
   singlelinecheck=false,
   position=bottom,
-  skip=1\baselineskip}
+  belowskip=-8pt,
+  parskip=0pt,
+  skip=20pt}
 
 \captionsetup[table]{
   labelsep=endash,
   justification=raggedright,
   singlelinecheck=false,
   position=top,
-  skip=0ex}
+  skip=0pt}
 
 \captionsetup[lstlisting]{
   labelsep=endash
 }
 
 \lstset{
-basicstyle=\small\ttfamily,
+basicstyle=\scriptsize\ttfamily,
+numberstyle=\scriptsize\ttfamily,
 keywordstyle=\bfseries,
 commentstyle=\itshape,
-numberstyle=\small\ttfamily,
 numbers=left,
 stepnumber=1,
 frame=single,
 resetmargins=true,
-xleftmargin=1.5em,
-xrightmargin=0.5em,
+xleftmargin=7mm,
+xrightmargin=2mm,
 captionpos=b,
 keepspaces=true,
 breaklines=true,
-aboveskip=1.2\baselineskip,
-belowskip=1\baselineskip,
-abovecaptionskip=1\baselineskip}
+aboveskip=22pt,
+belowskip=10pt,
+abovecaptionskip=16pt}
 
 \renewcommand{\arraystretch}{1.5}
 
 %%% Настройка размеров вертикальных отступов
 
-\renewcommand{\smallskip}{\vspace{0.5ex}}
-\renewcommand{\bigskip}{\vspace{\baselineskip}}
+\renewcommand{\smallskip}{\vspace{6pt}}
+\renewcommand{\bigskip}{\vspace{14pt}}
