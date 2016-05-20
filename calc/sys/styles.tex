@@ -1,0 +1,213 @@
+%%% Макет страницы %%%
+\geometry{a4paper,top=20mm,bottom=27mm,left=30mm,right=15mm}
+\setstretch{1.15}
+
+%%% Язык текста %%%
+\selectlanguage{russian}
+
+%%% Кодировки и шрифты %%%
+\renewcommand{\rmdefault}{ftm} % Включаем Times New Roman
+
+%%% Выравнивание и переносы %%%
+\sloppy				% Избавляемся от переполнений
+\clubpenalty=10000		% Запрещаем разрыв страницы после первой строки абзаца
+\widowpenalty=10000		% Запрещаем разрыв страницы после последней строки абзаца
+\interfootnotelinepenalty=10000 % Запрет разрывов сносок
+
+%%% Нумерация страниц %%%
+\fancypagestyle{empty}{%
+\fancyhf{} % clear all header and footer fields
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\headheight}{5mm}
+}
+
+\fancypagestyle{plain}{%
+\fancyhf{} % clear all header and footer fields
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\headheight}{5mm}
+}
+
+\pagestyle{plain}
+
+%%% Библиография %%%
+
+\makeatletter
+\bibliographystyle{ugost2003s} % Оформляем библиографию в соответствии с ГОСТ 7.1 2003
+
+\let\oldthebibliography=\thebibliography
+\let\endoldthebibliography=\endthebibliography
+\renewenvironment{thebibliography}[1]{
+  \begin{oldthebibliography}{#1}
+    \setlength{\parskip}{0ex}
+    \setlength{\itemsep}{0ex}
+}
+{
+\end{oldthebibliography}
+}
+
+%%% Изображения %%%
+\graphicspath{{images/}} % Пути к изображениям
+
+%%% Содержание %%%
+\renewcommand{\cfttoctitlefont}{\hfil \large\bfseries}
+
+\setlength{\cftparskip}{0em}
+\setlength{\cftbeforesecskip}{0em}
+\setlength{\cftaftertoctitleskip}{1\baselineskip}
+
+\renewcommand{\cftsecaftersnumb}{\:}
+\renewcommand{\cftsecfont}{}
+\renewcommand{\cftsecpagefont}{\normalsize}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftsecindent}{0em}
+\setlength{\cftsecnumwidth}{0.6em}
+
+\setlength{\cftsubsecindent}{0.7em}
+\setlength{\cftsubsecnumwidth}{1.5em}
+
+%%% Требования ЕСКД/СТП %%%
+
+%%% Размеры заголовков
+\newcommand{\sectionbreak}{\clearpage}
+
+\titleformat{\section}{\large\bfseries}{\thesection}{0.7em}{}
+\titlespacing*{\section}{5ex}{\baselineskip}{\baselineskip}
+
+\titleformat{name=\section,numberless}{\large\bfseries\filcenter}{}{0em}{}
+\titlespacing*{name=\section,numberless}{0ex}{\baselineskip}{\baselineskip}
+
+\titleformat{name=\subsection}{\normalsize\bfseries}{\thesubsection}{0.7em}{}
+\titlespacing*{\subsection}{5ex}{\baselineskip}{\baselineskip}
+
+\titleformat{name=\subsection,numberless}{\normalsize\bfseries}{}{0em}{}
+
+%%% Нумерация параграфов
+
+\counterwithout{paragraph}{subsubsection}
+\counterwithin{paragraph}{subsection}
+\renewcommand{\theparagraph}{\thesubsection.\arabic{paragraph}}
+\setcounter{secnumdepth}{4}
+
+\titleformat{name=\paragraph}[runin]{\normalsize\bfseries}{\theparagraph}{\wordsep}{}
+\titlespacing*{\paragraph}{5ex}{\baselineskip}{\wordsep}
+
+%%% Размеры текста формул %%%
+
+\DeclareMathSizes{12}{12}{6}{4}
+
+%%% Оформление текста
+
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{1.25cm}
+
+%%% Расстояние между плавающими элементами
+
+\setlength{\floatsep}{\baselineskip} % between top floats
+\setlength{\textfloatsep}{0.7\baselineskip} % between top/bottom floats and text
+\setlength{\intextsep}{\baselineskip} % between text and float
+\setlength{\dbltextfloatsep}{\baselineskip}
+\setlength{\dblfloatsep}{\baselineskip}
+
+ % костыль для того, чтобы убрать расстояние от картинки до текста
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{0pt}
+
+%%% Расстояние между формулами
+
+\AtBeginDocument{%
+  \setlength\abovedisplayskip{\baselineskip}%
+  \setlength\belowdisplayskip{\baselineskip}%
+  \setlength\abovedisplayshortskip{\baselineskip}%
+  \setlength\belowdisplayshortskip{\baselineskip}%
+}
+
+%%% Оформление списков
+
+\AddEnumerateCounter{\asbuk}{\@asbuk}{\cyrm}
+
+\setlist{nosep,listparindent=\parindent}
+\setlist[1]{itemindent=17.5mm,leftmargin=0em,itemsep=0em,topsep=0em,parsep=0em}
+\setlist[itemize,1]{label=$-$}
+\setlist[enumerate,1]{label=\arabic*)}
+
+\setlist[2]{itemindent=6.5em,leftmargin=0em,itemsep=0em,topsep=0em,parsep=0em}
+
+% Определяем новый стиль для списков,
+% на которые есть ссылки в тексте
+\newlist{reflist}{enumerate*}{1}
+\setlist*[reflist,1]{%
+  label=\asbuk*),
+}
+
+\setlist*[reflist,2]{%
+  label=\arabic*),
+}
+
+%% Подписи плавающих элементов
+
+\captionsetup[figure]{
+  labelsep=endash,
+  justification=centering,
+  singlelinecheck=false,
+  position=bottom,
+  skip=1\baselineskip}
+
+\captionsetup[table]{
+  labelsep=endash,
+  justification=raggedright,
+  singlelinecheck=false,
+  position=top,
+  skip=0ex}
+
+\captionsetup[lstlisting]{labelsep=endash,
+  justification=centering,
+  singlelinecheck=false,
+  skip=\baselineskip}
+
+\lstset{
+  basicstyle=\small\ttfamily,
+  keywordstyle=\bfseries,
+  commentstyle=\itshape,
+  numbers=none,
+  stepnumber=1,
+  frame=single,
+  framesep=0ex,
+  resetmargins=true,
+  captionpos=b,
+  keepspaces=true,
+  breaklines=true,
+  floatplacement=!h,
+  aboveskip=1.2\baselineskip,
+  belowskip=\baselineskip,
+  abovecaptionskip=\baselineskip,
+  belowcaptionskip=0pt}
+
+%%% Style of lslistings. Usage: \begin{lstlisting}[style=source_code] ... \end{lstlisting}
+\lstdefinestyle{source_code}{
+  basicstyle=\small\ttfamily,
+  keywordstyle=\bfseries,
+  commentstyle=\itshape,
+  numbers=none,
+  stepnumber=1,
+  frame=single,
+  framesep=0ex,
+  resetmargins=true,
+  captionpos=b,
+  keepspaces=true,
+  breaklines=true,
+  floatplacement=!h,
+  aboveskip=1.2\baselineskip,
+  belowskip=\baselineskip,
+  abovecaptionskip=\baselineskip,
+  belowcaptionskip=0pt
+}
+
+\renewcommand{\arraystretch}{1.5}
+
+%%% Настройка размеров вертикальных отступов
+
+\renewcommand{\smallskip}{\vspace{0.5ex}}
+\renewcommand{\bigskip}{\vspace{\baselineskip}}

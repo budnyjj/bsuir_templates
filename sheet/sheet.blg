@@ -1,0 +1,20 @@
+This is 8-bit Big BibTeX version 0.99d
+Implementation:  C for Unix
+Release version: 3.71 (18 mar 2013)
+
+The 8-bit codepage and sorting file: 88591lat.csf
+The top-level auxiliary file: sheet.aux
+The style file: ugost2003s.bst
+Reallocated glb_str_ptr (elt_size=8) to 10 items from 0.
+Reallocated global_strs (elt_size=20001) to 10 items from 0.
+Reallocated glb_str_end (elt_size=8) to 10 items from 0.
+Reallocated wiz_functions (elt_size=8) to 6000 items from 3000.
+Database file #1: bibliography/bibliography.bib
+
+Here's how much of BibTeX's memory you used:
+ Cites:                 1 out of 750
+ Fields:                2 out of 5000
+ Hash table:         9587 out of 10000
+ Strings:            1129 out of 10000
+ Free string pool:   8956 out of 65000
+ Wizard functions:   4129 out of 6000

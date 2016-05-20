@@ -96,7 +96,7 @@
 %%% Расстояние между плавающими элементами
 
 \setlength{\floatsep}{\baselineskip} % between top floats
-\setlength{\textfloatsep}{\baselineskip} % between top/bottom floats and text
+\setlength{\textfloatsep}{0.7\baselineskip} % between top/bottom floats and text
 \setlength{\intextsep}{\baselineskip} % between text and float
 \setlength{\dbltextfloatsep}{\baselineskip}
 \setlength{\dblfloatsep}{\baselineskip}
@@ -119,7 +119,7 @@
 \AddEnumerateCounter{\asbuk}{\@asbuk}{\cyrm}
 
 \setlist{nosep,listparindent=\parindent}
-\setlist[1]{itemindent=19mm,leftmargin=0em,itemsep=0em,topsep=0em,parsep=0em}             
+\setlist[1]{itemindent=17.5mm,leftmargin=0em,itemsep=0em,topsep=0em,parsep=0em}             
 \setlist[itemize,1]{label=$-$}
 \setlist[enumerate,1]{label=\arabic*)}
 
@@ -142,7 +142,7 @@
   justification=centering,
   singlelinecheck=false,
   position=bottom,
-  skip=1\baselineskip
+  skip=\baselineskip
 }
 
 \captionsetup[subfigure]{margin=0pt,
@@ -180,6 +180,26 @@
   belowskip=\baselineskip,
   abovecaptionskip=\baselineskip,
   belowcaptionskip=0pt}
+
+%%% Style of lslistings. Usage: \begin{lstlisting}[style=source_code] ... \end{lstlisting}
+\lstdefinestyle{source_code}{
+  basicstyle=\small\ttfamily,
+  keywordstyle=\bfseries,
+  commentstyle=\itshape,
+  numbers=none,
+  stepnumber=1,
+  frame=single,
+  framesep=0ex,
+  resetmargins=true,
+  captionpos=b,
+  keepspaces=true,
+  breaklines=true,
+  floatplacement=!h,
+  aboveskip=1.2\baselineskip,
+  belowskip=\baselineskip,
+  abovecaptionskip=\baselineskip,
+  belowcaptionskip=0pt
+}
 
 \renewcommand{\arraystretch}{1.5}
 

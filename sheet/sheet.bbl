@@ -1,0 +1,20 @@
+\begin{thebibliography}{1}
+\def\selectlanguageifdefined#1{
+\expandafter\ifx\csname date#1\endcsname\relax
+\else\selectlanguage{#1}\fi}
+\providecommand*{\href}[2]{{\small #2}}
+\providecommand*{\url}[1]{{\small #1}}
+\providecommand*{\BibUrl}[1]{\url{#1}}
+\providecommand{\BibAnnote}[1]{}
+\providecommand*{\BibEmph}[1]{#1}
+
+\bibitem{bloch08}
+\selectlanguageifdefined{russian}
+\BibEmph{Bloch,~Joshua}. Effective Java (2Nd Edition) (The Java Series)
+  [{Текст}]~/ Joshua~Bloch. "---
+\newblock 2 {изд.} "---
+\newblock Upper Saddle River, NJ, USA~: Prentice Hall PTR, 2008. "---
+\newblock ISBN:~\href{http://isbndb.com/search-all.html?kw=0321356683,
+  9780321356680}{0321356683, 9780321356680}.
+
+\end{thebibliography}
