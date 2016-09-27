@@ -22,12 +22,12 @@
 \fancyhf{} % clear all header and footer fields
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
-\setlength{\headheight}{5mm} 
+\setlength{\headheight}{5mm}
 }
 
 \fancypagestyle{plain}{%
 \fancyhf{} % clear all header and footer fields
-\fancyfoot[R]{\thepage} 
+\fancyfoot[R]{\thepage}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 \setlength{\headheight}{5mm}
@@ -35,30 +35,8 @@
 
 \pagestyle{plain}
 
-%%% Библиография %%%
-\makeatletter
-\bibliographystyle{ugost2003s}	% Оформляем библиографию в соответствии с ГОСТ 7.1 2003
-
 %%% Изображения %%%
 \graphicspath{{images/}} % Пути к изображениям
-
-%%% Содержание %%%
-\renewcommand{\cfttoctitlefont}{\hfil \large\bfseries}
-
-\renewcommand{\cftsecaftersnum}{}
-\renewcommand{\cftsecfont}{}   
-\renewcommand{\cftsecpagefont}{\normalsize}
-\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
-
-\setlength{\cftparskip}{0em}
-\setlength{\cftbeforesecskip}{0em}
-\setlength{\cftaftertoctitleskip}{\baselineskip}
-\setlength{\cftsecindent}{0em}
-\setlength{\cftsecnumwidth}{1ex}
-
-\setlength{\cftsubsecindent}{1em}
-\setlength{\cftsubsecnumwidth}{2ex}
-
 
 %%% Размеры заголовков
 \newcommand{\sectionbreak}{\clearpage}
@@ -119,11 +97,11 @@
 \AddEnumerateCounter{\asbuk}{\@asbuk}{\cyrm}
 
 \setlist{nosep,listparindent=\parindent}
-\setlist[1]{itemindent=17.5mm,leftmargin=0em,itemsep=0em,topsep=0em,parsep=0em}             
+\setlist[1]{itemindent=17.5mm,leftmargin=0em,itemsep=0em,topsep=0em,parsep=0em}
 \setlist[itemize,1]{label=$-$}
 \setlist[enumerate,1]{label=\arabic*)}
 
-\setlist[2]{itemindent=6.5em,leftmargin=0em,itemsep=0em,topsep=0em,parsep=0em}             
+\setlist[2]{itemindent=6.5em,leftmargin=0em,itemsep=0em,topsep=0em,parsep=0em}
 
 % Определяем новый стиль для списков,
 % на которые есть ссылки в тексте
@@ -214,9 +192,43 @@
 \renewcommand{\thelstlisting}{\arabic{lstlisting}}
 \renewcommand{\thefigure}{\arabic{figure}}
 \let\c@lstlisting\c@figure}
-\makeatother 
+\makeatother
 
 %%% Настройка размеров вертикальных отступов
 
-\renewcommand{\smallskip}{\vspace{0.5ex}}
-\renewcommand{\bigskip}{\vspace{\baselineskip}}
+\renewcommand{\smallskip}{\vspace{0.3\baselineskip}}
+\renewcommand{\bigskip}{\vspace{0.8\baselineskip}}
+
+%%% Содержание %%%
+\renewcommand{\cfttoctitlefont}{\hfil \large\bfseries}
+
+\setlength{\cftparskip}{0mm}
+\setlength{\cftbeforesecskip}{0mm}
+\setlength{\cftaftertoctitleskip}{\baselineskip}
+\cftsetpnumwidth{4mm}
+
+\renewcommand{\cftsecfont}{}
+\renewcommand{\cftsecpagefont}{\normalsize}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+\setlength{\cftsecindent}{0mm}
+\setlength{\cftsecnumwidth}{4mm}
+
+\setlength{\cftsubsecindent}{4mm}
+\setlength{\cftsubsecnumwidth}{8mm}
+
+%%% Библиография %%%
+
+\makeatletter
+\bibliographystyle{sys/ugost2003} % Оформляем библиографию в соответствии с ГОСТ 7.1 2003
+
+\let\oldthebibliography=\thebibliography
+\let\endoldthebibliography=\endthebibliography
+\renewenvironment{thebibliography}[1]{
+  \begin{oldthebibliography}{#1}
+    \setlength{\parskip}{0mm}
+    \setlength{\itemsep}{0mm}
+}
+{
+\end{oldthebibliography}
+}
