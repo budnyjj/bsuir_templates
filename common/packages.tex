@@ -1,0 +1,63 @@
+%%% Поля и разметка страницы %%%
+\usepackage{pdflscape}   % Для включения альбомных страниц
+\usepackage{geometry} % Для последующего задания полей
+\usepackage{setspace} % Для интерлиньяжа
+\usepackage[14pt]{extsizes}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{chngcntr} % Для нумерации параграфов
+\usepackage{calc}     % Для расчета ширины элементов
+\usepackage{url}      % Для настройки отображение ссылок
+\usepackage{pdfpages} % Для встраивания PDF
+
+%%% Кодировки и шрифты %%%
+\usepackage{cmap}                    % Улучшенный поиск русских слов в полученном pdf-файле
+\usepackage[T1,T2A]{fontenc}	     % Поддержка русских букв
+\usepackage[utf8x]{inputenc}	     % Кодировка utf8
+\usepackage[english, russian]{babel} % Языки: русский, английский
+
+\usepackage{pscyr}						% Красивые русские шрифты
+
+%%% Математические пакеты %%%
+\usepackage{amsthm,amsfonts,amsmath,amssymb,amscd} % Математические дополнения от AMS
+
+%%% Оформление абзацев %%%
+\usepackage{indentfirst} % Красная строка
+
+%%% Цвета %%%
+\usepackage{color}
+
+%%% Таблицы %%%
+\usepackage{longtable}		     % Длинные таблицы
+\usepackage{tabularx}
+\usepackage{tabulary}
+\usepackage{multirow,makecell,array} % Улучшенное форматирование таблиц
+
+%%% Сноски %%%
+\usepackage{tablefootnote} % Для сносок в таблицах
+\usepackage{scrextend}
+
+%%% Общее форматирование
+\usepackage[tableposition=top]{caption}
+\captionsetup[figure]{labelsep=space,justification=centering,singlelinecheck=false}
+\captionsetup[lstlisting]{labelsep=space,justification=centering,singlelinecheck=false}
+
+\usepackage{soul}                    % Поддержка переносоустойчивых подчёркиваний и зачёркиваний
+\usepackage{multicol}
+
+%%% Библиография %%%
+\usepackage{cite} % Красивые ссылки на литературу
+
+%%% Гиперссылки %%%
+\usepackage[unicode,plainpages=false,pdfpagelabels=false]{hyperref}
+
+%%% Изображения %%%
+\usepackage{graphicx} % Подключаем пакет работы с графикой
+
+%%% Листинги %%%
+\usepackage{listings} %% собственно, это и есть пакет listings
+
+%%% Рисунки TEX %%%
+\usepackage{tikz}
