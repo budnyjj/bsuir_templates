@@ -5,13 +5,13 @@
 \renewcommand{\rmdefault}{ftm} % Включаем Times New Roman
 
 %%% Макет страницы %%%
-\geometry{a4paper,top=20mm,left=31mm,right=15mm,bottom=27mm}
-\setstretch{1.05}
+\geometry{a4paper,top=20mm,left=30mm,right=10mm,bottom=20mm}
+\setstretch{1.07}
 
 %%% Выравнивание и переносы %%%
-\sloppy				% Избавляемся от переполнений
-\clubpenalty=10000		% Запрещаем разрыв страницы после первой строки абзаца
-\widowpenalty=10000		% Запрещаем разрыв страницы после последней строки абзаца
+\sloppy                 % Избавляемся от переполнений
+\clubpenalty=10000      % Запрещаем разрыв страницы после первой строки абзаца
+\widowpenalty=10000     % Запрещаем разрыв страницы после последней строки абзаца
 \interfootnotelinepenalty=10000 % Запрет разрывов сносок
 
 %%% Настройки полей %%%
@@ -21,8 +21,8 @@
 \fancyhf{} % clear all header and footer fields
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
-% \setlength{\footskip}{9mm}
-\setlength{\headheight}{4mm}
+\setlength{\footskip}{0mm}
+\setlength{\headheight}{0mm}
 }
 
 % Основной текст
@@ -31,8 +31,8 @@
 \fancyfoot[R]{\thepage}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
-\setlength{\footskip}{11mm}
-\setlength{\headheight}{4mm}
+\setlength{\footskip}{0mm}
+\setlength{\headheight}{0mm}
 }
 
 \pagestyle{plain}
@@ -54,20 +54,25 @@
 \setcounter{bottomnumber}{50}
 
 %%% Оформление заголовков
-\newcommand{\sectionbreak}{\clearpage}
+\newcommand{\chapterbreak}{\clearpage}
+
+\titleformat{\chapter}[display]{\large\bfseries\filcenter}{ГЛАВА \thechapter}{0mm}{\MakeUppercase}
+\titlespacing*{\chapter}{0mm}{0mm}{2\baselineskip}
+
+\titleformat{name=\chapter,numberless}{\large\bfseries\filcenter}{}{0mm}{\MakeUppercase}
+\titlespacing*{name=\chapter,numberless}{0mm}{0mm}{2\baselineskip}
 
 \titleformat{\section}{\large\bfseries}{\thesection}{\wordsep}{}
-\titlespacing*{\section}{\parindent}{\baselineskip}{\baselineskip}
+\titlespacing*{\section}{\parindent}{0mm}{2\baselineskip}
 
-\titleformat{name=\section,numberless}{\large\bfseries\filcenter}{}{0mm}{}
-\titlespacing*{name=\section,numberless}{0mm}{\baselineskip}{\baselineskip}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{\wordsep}{}
+\titlespacing*{\subsection}{\parindent}{0mm}{2\baselineskip}
 
-\titleformat{name=\subsection}{\normalsize\bfseries}{\thesubsection}{\wordsep}{}
-\titlespacing*{\subsection}{\parindent}{\baselineskip}{\baselineskip}
+% \titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{\wordsep}{}
+% \titlespacing*{\subsubsection}{\parindent}{\baselineskip}{\baselineskip}
 
-\titleformat{name=\subsection,numberless}{\normalsize\bfseries}{}{0mm}{}
-\titlespacing*{name=\subsection,numberless}{0mm}{\baselineskip}{\baselineskip}
-
+\counterwithout{paragraph}{subsubsection}
+\counterwithin{paragraph}{subsection}
 \renewcommand{\theparagraph}{\thesubsection.\arabic{paragraph}}
 \setcounter{secnumdepth}{4}
 
@@ -86,6 +91,12 @@
 \newlist{reflist}{enumerate}{1}
 \setlist*[reflist,1]{label=\asbuk*)}
 \setlist*[reflist,2]{label=\arabic*)}
+
+%%% Оформление сносок
+
+\deffootnote[1.65cm]{0mm}{1.25cm}{\textsuperscript{\thefootnotemark) }}
+\renewcommand{\footnotesize}{\normalsize\selectfont}
+\setlength{\footnotesep}{\parsep}
 
 %%% Оформление ссылок
 \urlstyle{same}
@@ -113,11 +124,15 @@
 
 %% Нумерация плавающих элементов
 
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\counterwithin{equation}{section}
+
 \makeatletter
 \AtBeginDocument{%
-\renewcommand{\thetable}{\arabic{table}}
-\renewcommand{\thelstlisting}{\arabic{lstlisting}}
-\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\thetable}{\thesection.\arabic{table}}
+\renewcommand{\thelstlisting}{\thesection.\arabic{lstlisting}}
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
 \let\c@lstlisting\c@figure}
 \makeatother
 
@@ -178,25 +193,34 @@ abovecaptionskip=1.2\baselineskip}
 %%% Настройка размеров вертикальных отступов
 
 \renewcommand{\smallskip}{\vspace{0.3\baselineskip}}
-\renewcommand{\bigskip}{\vspace{0.8\baselineskip}}
+\renewcommand{\bigskip}{\vspace{\baselineskip}}
 
 %%% Содержание %%%
-\renewcommand{\cfttoctitlefont}{\hfil \large\bfseries}
+\renewcommand{\cfttoctitlefont}{\hfil\large\bfseries\MakeUppercase}
 
+\setlength{\cftbeforetoctitleskip}{0mm}
+\setlength{\cftaftertoctitleskip}{2\baselineskip}
 \setlength{\cftparskip}{0mm}
-\setlength{\cftbeforesecskip}{0mm}
-\setlength{\cftaftertoctitleskip}{\baselineskip}
 \cftsetpnumwidth{4mm}
 
+\setlength{\cftbeforechapskip}{0mm}
+\setlength{\cftchapindent}{0mm}
+\setlength{\cftchapnumwidth}{4mm}
+\renewcommand{\cftchapfont}{}
+\renewcommand{\cftchappagefont}{\normalsize}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+\setlength{\cftbeforesecskip}{0mm}
+\setlength{\cftsecindent}{4mm}
+\setlength{\cftsecnumwidth}{8mm}
 \renewcommand{\cftsecfont}{}
 \renewcommand{\cftsecpagefont}{\normalsize}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 
-\setlength{\cftsecindent}{0mm}
-\setlength{\cftsecnumwidth}{4mm}
+\setlength{\cftbeforesubsecskip}{0mm}
+\setlength{\cftsubsecindent}{12mm}
+\setlength{\cftsubsecnumwidth}{12mm}
 
-\setlength{\cftsubsecindent}{4mm}
-\setlength{\cftsubsecnumwidth}{8mm}
 
 %%% Библиография %%%
 

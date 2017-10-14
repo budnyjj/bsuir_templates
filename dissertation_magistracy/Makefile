@@ -1,10 +1,10 @@
 default: compile
 
 compile:
-	pdflatex diploma.tex
+	pdflatex dissertation.tex
 
 bib:
-	bibtex8 -B diploma.aux
+	bibtex8 -B dissertation.aux
 
 clean:
 	$(RM) *.log

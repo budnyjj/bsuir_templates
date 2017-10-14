@@ -8,12 +8,14 @@
 \usepackage{enumitem}
 \usepackage{fancyhdr}
 \usepackage{chngcntr} % Для нумерации параграфов
+\usepackage{calc}     % Для расчета ширины элементов
+\usepackage{url}      % Для настройки отображение ссылок
+\usepackage{pdfpages} % Для встраивания PDF
 
 %%% Кодировки и шрифты %%%
 \usepackage{cmap}                    % Улучшенный поиск русских слов в полученном pdf-файле
 \usepackage[T1,T2A]{fontenc}	     % Поддержка русских букв
 \usepackage[utf8x]{inputenc}	     % Кодировка utf8
-% \usepackage[english=nohyphenation,russian=nohyphenation]{hyphsubst} % запрет перeносов
 \usepackage[english, russian]{babel} % Языки: русский, английский
 
 \usepackage{pscyr}						% Красивые русские шрифты
@@ -32,6 +34,10 @@
 \usepackage{tabularx}
 \usepackage{tabulary}
 \usepackage{multirow,makecell,array} % Улучшенное форматирование таблиц
+
+%%% Сноски %%%
+\usepackage{tablefootnote} % Для сносок в таблицах
+\usepackage{scrextend}
 
 %%% Общее форматирование
 \usepackage[tableposition=top]{caption}
