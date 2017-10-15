@@ -124,15 +124,15 @@
 
 %% Нумерация плавающих элементов
 
-\counterwithin{figure}{section}
-\counterwithin{table}{section}
-\counterwithin{equation}{section}
+\counterwithin{figure}{chapter}
+\counterwithin{table}{chapter}
+\counterwithin{equation}{chapter}
 
 \makeatletter
 \AtBeginDocument{%
-\renewcommand{\thetable}{\thesection.\arabic{table}}
-\renewcommand{\thelstlisting}{\thesection.\arabic{lstlisting}}
-\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+\renewcommand{\thetable}{\thechapter.\arabic{table}}
+\renewcommand{\thelstlisting}{\thechapter.\arabic{lstlisting}}
+\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
 \let\c@lstlisting\c@figure}
 \makeatother
 
