@@ -134,6 +134,7 @@
 \renewcommand{\thetable}{\thechapter.\arabic{table}}
 \renewcommand{\thelstlisting}{\thechapter.\arabic{lstlisting}}
 \renewcommand{\thefigure}{\thechapter.\arabic{figure}}
+\renewcommand{\thesubfigure}{\asbuk{subfigure}}
 \let\c@lstlisting\c@figure}
 \makeatother
 
@@ -148,8 +149,13 @@
   singlelinecheck=false,
   position=bottom,
   parskip=\parskip,
-  belowskip=-0.6\baselineskip,
-  skip=1.4\baselineskip}
+  skip=\baselineskip}
+
+\captionsetup[subfigure]{
+  labelsep=space,
+  labelformat=brace,
+  skip=\baselineskip,
+  font=normal}
 
 \captionsetup[table]{
   labelsep=endash,
@@ -168,8 +174,10 @@
   skip=0mm}
 
 \captionsetup[lstlisting]{
-  labelsep=endash
-}
+  labelsep=endash,
+  labelsep=space,
+  justification=centering,
+  singlelinecheck=false}
 
 \lstset{
 basicstyle=\scriptsize\ttfamily,
