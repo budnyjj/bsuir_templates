@@ -61,10 +61,10 @@
 \patchcmd{\@makeschapterhead}{\vspace*{50\p@}}{}{}{}% Removes space above \chapter* head
 \makeatother
 
-\titleformat{\chapter}[display]{\large\bfseries\filcenter}{ГЛАВА \thechapter}{0mm}{\MakeUppercase}
+\titleformat{\chapter}[display]{\large\bfseries\filcenter}{ГЛАВА \thechapter}{0mm}{}
 \titlespacing*{\chapter}{0mm}{-\baselineskip}{2\baselineskip}
 
-\titleformat{name=\chapter,numberless}{\large\bfseries\filcenter}{}{0mm}{\MakeUppercase}
+\titleformat{name=\chapter,numberless}{\large\bfseries\filcenter}{}{0mm}{}
 \titlespacing*{name=\chapter,numberless}{0mm}{-\baselineskip}{2\baselineskip}
 
 \titleformat{\section}{\large\bfseries}{\thesection}{\wordsep}{}
@@ -195,9 +195,9 @@ xrightmargin=2mm,
 captionpos=b,
 keepspaces=true,
 breaklines=true,
-aboveskip=1.6\baselineskip,
-belowskip=1.4\baselineskip,
-abovecaptionskip=1.2\baselineskip}
+aboveskip=\baselineskip,
+belowskip=\baselineskip,
+abovecaptionskip=\baselineskip}
 
 \renewcommand{\arraystretch}{1.5}
 
