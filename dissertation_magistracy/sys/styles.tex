@@ -70,6 +70,9 @@
 \titleformat{\section}{\large\bfseries}{\thesection}{\wordsep}{}
 \titlespacing*{\section}{\parindent}{0mm}{2\baselineskip}
 
+\titleformat{name=\section,numberless}{\large\bfseries\filcenter}{}{\wordsep}{}
+\titlespacing*{name=\section,numberless}{0mm}{-\baselineskip}{2\baselineskip}
+
 \titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{\wordsep}{}
 \titlespacing*{\subsection}{\parindent}{0mm}{2\baselineskip}
 
@@ -146,7 +149,9 @@
 \fboxrule=0.1mm
 
 \captionsetup[figure]{
+  textfont={bf},
   labelsep=endash,
+  labelfont={small,bf},
   justification=centering,
   singlelinecheck=false,
   position=bottom,
@@ -154,7 +159,9 @@
   skip=\baselineskip}
 
 \captionsetup[subfigure]{
+  textfont={bf},
   labelsep=space,
+  labelfont={small,bf},
   labelformat=brace,
   skip=\baselineskip,
   font=normal}
@@ -176,8 +183,9 @@
   skip=0mm}
 
 \captionsetup[lstlisting]{
+  textfont={bf},
+  labelfont={small,bf},
   labelsep=endash,
-  labelsep=space,
   justification=centering,
   singlelinecheck=false}
 
