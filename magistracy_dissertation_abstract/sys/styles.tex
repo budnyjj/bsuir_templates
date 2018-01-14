@@ -1,0 +1,233 @@
+%%% Язык текста %%%
+\selectlanguage{russian}
+
+%%% Кодировки и шрифты %%%
+\renewcommand{\rmdefault}{ftm} % Включаем Times New Roman
+
+%%% Макет страницы %%%
+\geometry{a4paper,top=20mm,left=30mm,right=10mm,bottom=20mm}
+\setstretch{1.07}
+
+%%% Выравнивание и переносы %%%
+\sloppy                 % Избавляемся от переполнений
+\clubpenalty=10000      % Запрещаем разрыв страницы после первой строки абзаца
+\widowpenalty=10000     % Запрещаем разрыв страницы после последней строки абзаца
+\interfootnotelinepenalty=10000 % Запрет разрывов сносок
+
+%%% Настройки полей %%%
+
+% Титульная страница
+\fancypagestyle{empty}{%
+  \fancyhf{} % clear all header and footer fields
+  \setlength{\headheight}{0mm}
+  \setlength{\footskip}{0mm}
+}
+
+% Основной текст
+\fancypagestyle{plain}{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyfoot[R]{\thepage}
+  \renewcommand{\headrulewidth}{0mm}
+  \renewcommand{\footrulewidth}{0mm}
+  \setlength{\voffset}{13mm}
+  \setlength{\headheight}{0mm}
+  \setlength{\headsep}{0mm}
+}
+
+\pagestyle{plain}
+
+%%% Оформление текста
+
+\setlength{\parskip}{0mm}
+\setlength{\parindent}{1.25cm}
+\raggedbottom{}
+
+\renewcommand\floatpagefraction{.9}
+\renewcommand\dblfloatpagefraction{.9} % for two column documents
+\renewcommand\topfraction{.9}
+\renewcommand\dbltopfraction{.9}       % for two column documents
+\renewcommand\bottomfraction{.9}
+\renewcommand\textfraction{.1}
+\setcounter{totalnumber}{50}
+\setcounter{topnumber}{50}
+\setcounter{bottomnumber}{50}
+
+%%% Оформление заголовков
+\titleformat{\section}{\large\bfseries\filcenter}{}{\wordsep}{\MakeUppercase}
+\titlespacing*{\section}{0mm}{2\baselineskip}{2\baselineskip}
+
+\titleformat{\paragraph}[runin]{\normalsize\bfseries}{}{\wordsep}{}[.]
+\titlespacing*{\paragraph}{\parindent}{0mm}{\wordsep}
+
+%%% Оформление списков
+\setlist[1]{itemindent=1.85cm,leftmargin=0mm,itemsep=0mm,topsep=0mm,parsep=0mm}
+\setlist[itemize,1]{label=---}
+\setlist[enumerate,1]{label=\arabic*)}
+
+\setlist[2]{itemindent=3.1cm,leftmargin=0mm,itemsep=0mm,topsep=0mm,parsep=0mm}
+
+% Cтиль для списков, на которые есть ссылки в тексте
+\AddEnumerateCounter{\asbuk}{\@asbuk}{\cyrm}
+\newlist{reflist}{enumerate}{1}
+\setlist*[reflist,1]{label=\asbuk*)}
+\setlist*[reflist,2]{label=\arabic*)}
+
+%%% Оформление сносок
+\deffootnote[1.65cm]{0mm}{1.25cm}{\textsuperscript{\thefootnotemark) }}
+\renewcommand{\footnotesize}{\normalsize\selectfont}
+\setlength{\footnotesep}{\parsep}
+
+%%% Оформление таблиц
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+%%% Оформление ссылок
+\urlstyle{same}
+
+%%% Размеры текста формул %%%
+\DeclareMathSizes{12}{12}{6}{4}
+
+%%% Расстояние между формулами
+\AtBeginDocument{%
+  \setlength\abovedisplayskip{\baselineskip}%
+  \setlength\belowdisplayskip{\baselineskip}%
+  \setlength\abovedisplayshortskip{\baselineskip}%
+  \setlength\belowdisplayshortskip{\baselineskip}%
+}
+
+%%% Расстояние между плавающими элементами
+
+\setlength{\floatsep}{1.5\baselineskip plus 0mm minus 0mm}     % between top floats
+\setlength{\textfloatsep}{1.5\baselineskip plus 0mm minus 0mm} % between top/bottom floats and text
+\setlength{\intextsep}{1.5\baselineskip plus 0mm minus 0mm}    % between text and float
+\setlength{\dbltextfloatsep}{1.5\baselineskip plus 0mm minus 0mm}
+\setlength{\dblfloatsep}{1.5\baselineskip plus 0mm minus 0mm}
+
+%% Нумерация плавающих элементов
+
+\counterwithin{figure}{chapter}
+\counterwithin{table}{chapter}
+\counterwithin{equation}{chapter}
+
+\makeatletter
+\AtBeginDocument{%
+\renewcommand{\thetable}{\thechapter.\arabic{table}}
+\renewcommand{\thelstlisting}{\thechapter.\arabic{lstlisting}}
+\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
+\renewcommand{\thesubfigure}{\asbuk{subfigure}}
+\let\c@lstlisting\c@figure}
+\makeatother
+
+%% Подписи плавающих элементов
+
+\fboxsep=4mm
+\fboxrule=0.1mm
+
+\captionsetup[figure]{
+  textfont={bf},
+  labelsep=endash,
+  labelfont={small,bf},
+  justification=centering,
+  singlelinecheck=false,
+  position=bottom,
+  parskip=\parskip,
+  skip=\baselineskip}
+
+\captionsetup[subfigure]{
+  textfont={bf},
+  labelsep=space,
+  labelfont={small,bf},
+  labelformat=brace,
+  skip=\baselineskip,
+  font=normal}
+
+\captionsetup[table]{
+  labelsep=endash,
+  justification=raggedright,
+  singlelinecheck=false,
+  position=top,
+  belowskip=-0.4\baselineskip,
+  skip=0mm}
+
+\captionsetup[longtable]{
+  labelsep=endash,
+  justification=raggedright,
+  singlelinecheck=false,
+  position=top,
+  belowskip=0.4\baselineskip,
+  skip=0mm}
+
+\captionsetup[lstlisting]{
+  textfont={bf},
+  labelfont={small,bf},
+  labelsep=endash,
+  justification=centering,
+  singlelinecheck=false}
+
+\lstset{
+basicstyle=\small\ttfamily,
+numberstyle=\small\ttfamily,
+keywordstyle=\bfseries,
+commentstyle=\itshape,
+numbers=left,
+stepnumber=1,
+frame=single,
+resetmargins=true,
+xleftmargin=7mm,
+xrightmargin=2mm,
+captionpos=b,
+keepspaces=true,
+breaklines=true,
+aboveskip=\baselineskip,
+belowskip=\baselineskip,
+abovecaptionskip=\baselineskip}
+
+\renewcommand{\arraystretch}{1.5}
+
+%%% Настройка размеров вертикальных отступов
+
+\renewcommand{\smallskip}{\vspace{0.3\baselineskip}}
+\renewcommand{\bigskip}{\vspace{\baselineskip}}
+
+%%% Содержание %%%
+\renewcommand{\cfttoctitlefont}{\hfil\large\bfseries\MakeUppercase}
+
+\setlength{\cftbeforetoctitleskip}{-\baselineskip}
+\setlength{\cftaftertoctitleskip}{2\baselineskip}
+\setlength{\cftparskip}{0mm}
+\cftsetpnumwidth{4mm}
+
+\setlength{\cftbeforechapskip}{0mm}
+\setlength{\cftchapindent}{0mm}
+\setlength{\cftchapnumwidth}{4mm}
+\renewcommand{\cftchapfont}{}
+\renewcommand{\cftchappagefont}{\normalsize}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+\setlength{\cftbeforesecskip}{0mm}
+\setlength{\cftsecindent}{4mm}
+\setlength{\cftsecnumwidth}{8mm}
+\renewcommand{\cftsecfont}{}
+\renewcommand{\cftsecpagefont}{\normalsize}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+\setlength{\cftbeforesubsecskip}{0mm}
+\setlength{\cftsubsecindent}{12mm}
+\setlength{\cftsubsecnumwidth}{12mm}
+
+
+%%% Библиография %%%
+
+\makeatletter
+\bibliographystyle{ugost2008} % Оформляем библиографию в соответствии с ГОСТ 7.1 2008
+
+\let\oldthebibliography=\thebibliography
+\let\endoldthebibliography=\endthebibliography
+\renewenvironment{thebibliography}[1]{
+  \begin{oldthebibliography}{#1}
+    \setlength{\parskip}{0mm}
+    \setlength{\itemsep}{0mm}
+}
+{
+\end{oldthebibliography}
+}
