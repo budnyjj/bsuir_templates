@@ -54,34 +54,25 @@
 
 %%% Оформление заголовков
 \newcommand{\chapterbreak}{\clearpage}
+\newcommand{\chapternewline}{\NoCaseChange{\\}}
 
-\makeatletter
-\patchcmd{\@makechapterhead}{\vspace*{50\p@}}{}{}{}% Removes space above \chapter head
-\patchcmd{\@makeschapterhead}{\vspace*{50\p@}}{}{}{}% Removes space above \chapter* head
-\makeatother
-
-\titleformat{\chapter}[display]{\large\bfseries\filcenter}{ГЛАВА \thechapter}{0mm}{}
+\titleformat{\chapter}[display]{\large\bfseries\filcenter}{ГЛАВА \thechapter}{0mm}{\MakeTextUppercase}
 \titlespacing*{\chapter}{0mm}{-\baselineskip}{2\baselineskip}
 
-\titleformat{name=\chapter,numberless}{\large\bfseries\filcenter}{}{0mm}{}
+\titleformat{name=\chapter,numberless}{\large\bfseries\filcenter}{}{0mm}{\MakeTextUppercase}
 \titlespacing*{name=\chapter,numberless}{0mm}{-\baselineskip}{2\baselineskip}
 
 \titleformat{\section}{\large\bfseries}{\thesection}{\wordsep}{}
-\titlespacing*{\section}{\parindent}{0mm}{2\baselineskip}
+\titlespacing*{\section}{\parindent}{2\baselineskip}{2\baselineskip}
 
-\titleformat{name=\section,numberless}{\large\bfseries\filcenter}{}{\wordsep}{}
-\titlespacing*{name=\section,numberless}{0mm}{-\baselineskip}{2\baselineskip}
+\titleformat{name=\section,numberless}{\large\bfseries\filcenter}{}{0mm}{}
+\titlespacing*{name=\section,numberless}{0mm}{2\baselineskip}{2\baselineskip}
 
 \titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{\wordsep}{}
-\titlespacing*{\subsection}{\parindent}{0mm}{2\baselineskip}
+\titlespacing*{\subsection}{\parindent}{2\baselineskip}{2\baselineskip}
 
-\counterwithout{paragraph}{subsubsection}
-\counterwithin{paragraph}{subsection}
-\renewcommand{\theparagraph}{\thesubsection.\arabic{paragraph}}
-\setcounter{secnumdepth}{4}
-
-\titleformat{name=\paragraph}[runin]{\normalsize\bfseries}{\theparagraph}{\wordsep}{}
-\titlespacing*{\paragraph}{\parindent}{\baselineskip}{\wordsep}
+\titleformat{\paragraph}[runin]{\normalsize\bfseries}{}{\wordsep}{}[.]
+\titlespacing*{\paragraph}{\parindent}{0mm}{\wordsep}
 
 %%% Оформление списков
 \setlist[1]{itemindent=1.85cm,leftmargin=0mm,itemsep=0mm,topsep=0mm,parsep=0mm}
@@ -171,14 +162,6 @@
   singlelinecheck=false,
   position=top,
   belowskip=-0.4\baselineskip,
-  skip=0mm}
-
-\captionsetup[longtable]{
-  labelsep=endash,
-  justification=raggedright,
-  singlelinecheck=false,
-  position=top,
-  belowskip=0.4\baselineskip,
   skip=0mm}
 
 \captionsetup[lstlisting]{
